@@ -79,65 +79,11 @@ var Application = {
 					if(dataObject[i].board_id == board_id){
 						Application.board_id = dataObject[i].board_id;
 						console.log(Application.board_id);
-						appendList = '<li><a href="#page-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id+'"><h2>'+dataObject[i].title+'</h2></a></li>';
+						appendList = '<li><a href="#list-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id+'"><h2>'+dataObject[i].title+'</h2></a></li>';
 						$('#list-list').append(appendList);
 					}
 				}
 				$('#list-list').listview('refresh');
-			},
-			complete : function(){
-				$.mobile.loading('hide');
-			}
-		});
-	},
-
-	initShowCardList : function(list_id){
-		var appendList ="";
-		$.ajax({
-			url: 'http://alvayonara.tk/web_service_card.php',
-			type: 'get',
-			beforeSend : function(){
-				$.mobile.loading('show',{
-					text : 'Please wait while retrieving data...',
-					textVisible : true
-				});
-			},
-			success : function(dataObject){
-				$('#list-card').empty();
-				for (var i = 0; i < dataObject.length; i++) {
-					if(dataObject[i].list_id == list_id){
-						appendList = '<li><a href="#page-card_detail?card_id='+dataObject[i].id+'" target="_self" id="detail-card" data-cardid="'+dataObject[i].id+
-						'"><h2>'+dataObject[i].title+'</h2><p>'+ dataObject[i].description +'</p><p>'+ dataObject[i].due_date +'</p></a></li>';
-						$('#list-card').append(appendList);
-					}
-				}
-				$('#list-card').listview('refresh');
-			},
-			complete : function(){
-				$.mobile.loading('hide');
-			}
-		});
-	},
-
-	initShowCardDetail : function(card_id){
-		$.ajax({
-			url: 'http://alvayonara.tk/web_service_card.php',
-			type: 'get',
-			beforeSend : function(){
-				$.mobile.loading('show',{
-					text : 'Please wait while retrieving data...',
-					textVisible : true
-				});
-			},
-			success : function(dataObject){
-				for(var i=0; i<dataObject.length; i++){
-					if(dataObject[i].id == card_id){
-						$('#p-title,#p-description,#p-duedate').empty();
-						$('#p-title').append('<b>Title: </b>'+dataObject[i].title);
-						$('#p-description').append('<b>Description: </b>'+dataObject[i].description);
-						$('#p-duedate').append('<b>Due date: </b>'+dataObject[i].due_date);
-					}
-				}
 			},
 			complete : function(){
 				$.mobile.loading('hide');
