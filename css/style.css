@@ -1,0 +1,34 @@
+.splash {
+  text-align: center;
+   display: block;
+    margin: 0 auto;
+}
+#page-boards, #page-newboard, #page-list, #page-card, #page-card_detail{
+  background:#c2ebf9;
+}
+#header-boards, #header-newboards, #header-list, #header-card, #header-card-detail, #page-one{
+  background: #29abe2;
+}
+#header-boards, #header-newboards h1{
+  color: white;
+}
+#ui-content-newboards p{
+  text-align: center;
+  font-size:28px;
+  padding-bottom: 15px;
+}
+.ui-content #image-logo{
+  padding-top: 30px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.ui-grid-solo{
+   position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.error {
+    color:red;
+}
