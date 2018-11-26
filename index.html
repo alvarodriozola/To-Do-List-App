@@ -83,8 +83,10 @@
 
           </ul>
           <div>
-              <input type="text" placeholder="New list" class="ui-button">
-              <input type="button" value="create" class="ui-button">
+            <form action=""  method="POST">
+                <input type="text" id="list-title" placeholder="New list" class="ui-button">
+                <input type="button" id="btn-create_list" value="create" class="ui-button">
+            </form>
           </div>
       </div>
       <div data-role="footer" data-position="fixed">
@@ -97,7 +99,7 @@
       </div>
 </div>
 
-      <!--Card page-->
+<!--Card page-->
 <div data-role="page" id="page-card" data-theme="a">
   <div data-role="header" id="header-card">
     <a href="#page-list" class="ui-btn ui-btn-left ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext"></a>
