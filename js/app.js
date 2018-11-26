@@ -103,7 +103,7 @@ var Application = {
 					if(dataObject[i].board_id == board_id){
 						Application.board_id = dataObject[i].board_id;
 						console.log(Application.board_id);
-						appendList = '<li><a href="#page-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id
+						appendList = '<li><a href="#list-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id
 						+'"><h2>'+dataObject[i].title+'</h2></a><a href="#page-list-detail?list_id='+dataObject[i].id +' target="_self" id="edit-list" data-listid="'+dataObject[i].id
 						+'"><h2>detail</h2></a></li>';
 						$('#list-list').append(appendList);
