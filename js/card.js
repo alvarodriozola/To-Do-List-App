@@ -165,6 +165,7 @@ var getEditedCard = function(){
 
 var editCard = function () {
 	Card.edit ({
+		id: $('#show-card').data('id'),
 		title: $('#edit-card-title').val(),
 		description: $('#edit-card-description').val(),
 		due_date: $('#edit-card-due').val()
