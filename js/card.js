@@ -126,7 +126,9 @@ var Card = {
 				id: id
 			},
 			success : function (data) {
-				console.log(data);
+				$('#show-card-done').attr("disabled", "disabled");
+				$('#show-card-edit').attr("disabled", "disabled");
+				$('#show-card-done').va("done");
 			},
 			complete : function () {
 				$.mobile.loading('hide');
