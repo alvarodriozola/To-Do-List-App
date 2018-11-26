@@ -1,7 +1,7 @@
 var Application = {
-	
+
 	board_id : 0,
-	
+
 	initApplication : function(){
 		// $(window).load('pageinit', '#page-boards', function(){
 		// 	Application.initShowBoards();
@@ -14,16 +14,6 @@ var Application = {
 		$(document).on('click', '#detail-board', function(){
 			var board_id = $(this).data('boardid');
 			Application.initShowDetailList(board_id);
-		})
-
-		$(document).on('click', '#detail-list', function(){
-			var list_id = $(this).data('listid');
-			Application.initShowCardList(list_id);
-		})
-
-		$(document).on('click', '#detail-card', function(){
-			var card_id = $(this).data('cardid');
-			Application.initShowCardDetail(card_id);
 		})
 
 		$(document).on('click', '#btn-login', function(){
@@ -41,6 +31,8 @@ var Application = {
 		$(document).on('click', '#delete-list', function(){
 			Application.deleteList();
 		})
+
+		addCardEventListeners();
 	},
 
 	initShowBoards : function(user_id){
