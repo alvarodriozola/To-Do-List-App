@@ -12,7 +12,7 @@
     <link href="css/mobiscroll.jquery.min.css" rel="stylesheet" />
   </head>
   <body>
-    <div data-role="page" id="splash" style="background-color: #29abe2;"> 
+    <div data-role="page" id="splash" style="background-color: #29abe2;">
     <div class="splash">
         <center><img src="http://i68.tinypic.com/28tb3eu.png"></center>
     </div>
@@ -39,6 +39,10 @@
       <div role="main" class="ui-content">
         <ul id="list-boards" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Boards">
         </ul>
+        <form action=""  method="POST">
+            <input type="text" id="board-title" placeholder="Board title" class="ui-button">
+            <input type="button" id="btn-create_board" value="create board" class="ui-button">
+        </form>
       </div>
       <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
@@ -48,28 +52,6 @@
           </ul>
         </div>
       </div>
-    </div>
-
-    <!--Board page-->
-    <div data-role="page" id="page-newboard">
-      <form id="form-newboard" method="post">
-        <div data-role="header" id="header-newboards">
-          <a href="#page-boards" class="ui-btn ui-btn-left ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext"></a>
-          <h1>New Boards</h1>
-        </div>
-        <div role="main" class="ui-content" id="ui-content-newboards">
-          <img src="https://cdn3.iconfinder.com/data/icons/rest/30/add_order-512.png" height="110px" id="image-logo">
-          <p>Add a new Board</p>
-          <div data-role="fieldcontainer">
-            <input type="text" name="titleboard" id="titleboard" placeholder="Title Board">
-            <h2></h2>
-          </div>
-        </div>
-        <div class="ui-grid-solo">
-          <div class="ui-block-a"><input type="submit" value="Add board"></div>
-        </div>
-      </form>
-
     </div>
 
     <!--List page-->
@@ -83,8 +65,10 @@
 
           </ul>
           <div>
-              <input type="text" placeholder="New list" class="ui-button">
-              <input type="button" value="create" class="ui-button">
+            <form action=""  method="POST">
+                <input type="text" id="list-title" placeholder="New list" class="ui-button">
+                <input type="button" id="btn-create_list" value="create" class="ui-button">
+            </form>
           </div>
       </div>
       <div data-role="footer" data-position="fixed">
@@ -97,7 +81,7 @@
       </div>
 </div>
 
-      <!--Card page-->
+<!--Card page-->
 <div data-role="page" id="page-card" data-theme="a">
   <div data-role="header" id="header-card">
     <a href="#page-list" class="ui-btn ui-btn-left ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext"></a>
