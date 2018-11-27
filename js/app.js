@@ -182,7 +182,7 @@ var Application = {
 				}
 				if(error == false){
 					location.href = "#page-boards?user_id=" + index;
-					Application.initShowBoards(i);
+					Application.initShowBoards(index);
 				}else{
 					alert('Gagal login');
 				}
