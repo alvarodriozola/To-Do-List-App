@@ -1,6 +1,7 @@
 var Application = {
 
 	board_id : 0,
+	deleted_list_id : 0,
 
 	initApplication : function(){
 		// $(window).load('pageinit', '#page-boards', function(){
@@ -33,6 +34,24 @@ var Application = {
 		})
 
 		addCardEventListeners();
+
+		$(document).on('click', '#btn-create_list', function(){
+			Application.createList();
+		})
+
+		$(document).on('click', '#edit-list', function(){
+			var list_id = $(this).data('listid');
+			Application.deleted_list_id = list_id;
+			console.log("Deleted list id" + Application.deleted_list_id);
+		})
+
+		$(document).on('click', '#delete-list', function(){
+			Application.deleteList();
+		})
+
+		$(document).on('click', '#edit-list-title', function(){
+			Application.editList();
+		})
 	},
 
 	initShowBoards : function(user_id){
@@ -79,7 +98,9 @@ var Application = {
 					if(dataObject[i].board_id == board_id){
 						Application.board_id = dataObject[i].board_id;
 						console.log(Application.board_id);
-						appendList = '<li><a href="#list-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id+'"><h2>'+dataObject[i].title+'</h2></a></li>';
+						appendList = '<li><a href="#page-card?list_id='+dataObject[i].id+'" target="_self" id="detail-list" data-listid="'+dataObject[i].id
+						+'"><h2>'+dataObject[i].title+'</h2></a><a href="#page-list-detail?list_id='+dataObject[i].id +' target="_self" id="edit-list" data-listid="'+dataObject[i].id
+						+'"><h2>detail</h2></a></li>';
 						$('#list-list').append(appendList);
 					}
 				}
@@ -115,7 +136,7 @@ var Application = {
 				}
 				if(error == false){
 					location.href = "#page-boards?user_id=" + index;
-					Application.initShowBoards(i);
+					Application.initShowBoards(index);
 				}else{
 					alert('Gagal login');
 				}
@@ -143,14 +164,34 @@ var Application = {
 	},
 
 	deleteList : function(){
+		console.log("Yang mau dihapus " + Application.deleted_list_id);
 		$.ajax({
-			method: "POST",
+			method: "GET",
 			url: "http://alvayonara.tk/api/list/delete.php",
-			data: { id : Application.board_id},
+			data: { id : Application.deleted_list_id },
 			success : function(){
 				console.log("complete");
+				Application.initShowDetailList(Application.board_id);
 			},
 		}).done(function(){
+			location.href = "#page-list?board_id=" + Application.board_id;
+			Application.initShowDetailList(Application.board_id);
+		});
+	},
+
+	editList : function(){
+		var list_title = document.getElementById('titlelist').value;
+		console.log("Edited title" + list_title);
+		$.ajax({
+			method: "POST",
+			url: "http://alvayonara.tk/api/list/edit.php",
+			data: { id : Application.deleted_list_id , title : list_title },
+			success : function(){
+				console.log("complete");
+				Application.initShowDetailList(Application.board_id);
+			},
+		}).done(function(){
+			location.href = "#page-list?board_id=" + Application.board_id;
 			Application.initShowDetailList(Application.board_id);
 		});
 	}

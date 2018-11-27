@@ -191,6 +191,30 @@
     </div>
 <!-- CARD PAGES END -->
 
+<!--List detail-->
+<div data-role="page" id="page-list-detail">
+    <form id="form-newboard" method="post">
+      <div data-role="header" id="header-list-detail">
+        <a href="#page-list" class="ui-btn ui-btn-left ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext"></a>
+        <h1>Detail list</h1>
+      </div>
+      <div role="main" class="ui-content" id="ui-content-list-detail">
+        <img src="https://cdn3.iconfinder.com/data/icons/rest/30/add_order-512.png" height="110px" id="image-logo">
+        <p>Delete list</p>
+        <div data-role="fieldcontainer">
+          <!--<input type="text" name="titlelist" id="titlelist" placeholder="New Title">-->
+          <h2></h2>
+        </div>
+      </div>
+      <div class="ui-grid-solo">
+        <div class="ui-block-a">
+          <!--<input id="edit-list-title" type="button" value="Edit">-->
+          <input id="delete-list" type="button" value="Delete">
+        </div>
+      </div>
+    </form>
+    </div>
+
     <script src="js/card.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
     <script>Application.initApplication();</script>
