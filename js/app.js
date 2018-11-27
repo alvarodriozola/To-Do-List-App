@@ -15,6 +15,7 @@ var Application = {
 });
 		$(document).on('click', '#detail-board', function(){
 			var board_id = $(this).data('boardid');
+			Application.board_id = board_id;
 			Application.initShowDetailList(board_id);
 		})
 
@@ -28,19 +29,11 @@ var Application = {
 			Application.createList();
 		})
 
-		$(document).on('click', '#btn-create_list', function(){
-			Application.createList();
-		})
-
 		$(document).on('click', '#delete-list', function(){
 			Application.deleteList();
 		})
 
 		addCardEventListeners();
-
-		$(document).on('click', '#btn-create_list', function(){
-			Application.createList();
-		})
 
 		$(document).on('click', '#edit-list', function(){
 			var list_id = $(this).data('listid');
