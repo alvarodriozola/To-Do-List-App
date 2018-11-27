@@ -2,6 +2,7 @@ var Application = {
 
 	board_id : 0,
 	deleted_list_id : 0,
+	user_id : 0,
 
 	initApplication : function(){
 		// $(window).load('pageinit', '#page-boards', function(){
@@ -20,7 +21,9 @@ var Application = {
 		$(document).on('click', '#btn-login', function(){
 			Application.login();
 		})
-
+		$(document).on('click', '#btn-create_board', function(){
+			Application.createBoard();
+		})
 		$(document).on('click', '#btn-create_list', function(){
 			Application.createList();
 		})
@@ -69,6 +72,8 @@ var Application = {
 				$('#list-boards').empty();
 				for (var i = 0; i < dataObject.length; i++) {
 					if(dataObject[i].user_id == user_id){
+						Application.user_id = dataObject[i].user_id;
+						console.log(Application.user_id);
 						appendList = '<li><a href="#page-list?board_id='+dataObject[i].id+'" target="_self" id="detail-board" data-boardid="'+dataObject[i].id+'"><h2>'+dataObject[i].title+'</h2></a></li>';
 						$('#list-boards').append(appendList);
 					}
@@ -163,6 +168,21 @@ var Application = {
 		});
 	},
 
+	createBoard : function(){
+		var board_title = document.getElementById('board-title').value;
+		console.log("a"+board_title);
+		console.log("b"+Application.user_id);
+		$.ajax({
+			method: "POST",
+			url: "http://alvayonara.tk/api/board/add.php",
+			data: { board_title: board_title, user_id : Application.user_id},
+			success : function(){
+				console.log("complete");
+			},
+		}).done(function(){
+			Application.initShowBoards(Application.user_id);
+		});
+	},
 	deleteList : function(){
 		console.log("Yang mau dihapus " + Application.deleted_list_id);
 		$.ajax({
